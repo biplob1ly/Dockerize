@@ -32,15 +32,17 @@
 
 Filename: Dockerfile
 
-> From alpine:latest
-> RUN apk add --update redis
-> COPY ./files /app/files
-> ADD zipped_file.tar /app
+> From alpine:latest  
+> RUN apk add --update redis  
+> COPY ./files /app/files  
+> ADD zipped_file.tar /app  
 > CMD ["redis-server"]
 
 Build an image from the above file:
-\> docker build -t docker_id/image_name:latest .
+\> docker build -t dockerhub_id/image_name:latest .
 
-Check if it is okay:
-\> docker image ls
-\> docker container run docker_id/image_name
+Check if it is okay:  
+\> docker image ls -a  
+\> docker container run -p 8080:8080 dockerhub_id/image_name --name custom_container_name
+
+Port mapping from docker to our machine
